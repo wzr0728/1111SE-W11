@@ -21,3 +21,8 @@ def bid(id, price, UiD):
     cur.execute(sql,(OiD, UiD, price))
     conn.commit()
     return True
+def getMyActive(UiD):
+    sql = "select id, OiD, UiD, price from OrderCase where UiD = %s order by id desc;"
+    cur.execute(sql,(UiD,))
+    records = cur.fetchall()
+    return records #由大到小排列
