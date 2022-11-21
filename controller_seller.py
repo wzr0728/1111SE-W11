@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 from dbConfig import conn, cur
-def add(Uid, name, deadline):
+def add(Uid, name, deadline, first_price):
     if(name == None):
         return False
-    sql = "insert into SaleCase (UiD, name, deadline) values (%s,%s,%s);"
-    cur.execute(sql,(UiD, name, deadline))
+    sql = "insert into SaleCase (UiD, name, deadline, first_price) values (%s,%s,%s);"
+    cur.execute(sql,(UiD, name, deadline, first_price))
     conn.commit()
     return True
 
