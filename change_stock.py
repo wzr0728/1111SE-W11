@@ -1,8 +1,8 @@
-#!C:\Python39\python.exe
+#!C:\Users\何晏禎\AppData\Local\Programs\Python\Python310\python.exe
 import codecs, sys 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 import cgi
-import control_in_stock
+import controller_seller
 
 #先印出http 表頭
 print("Content-Type: text/html; charset=utf-8\n")
@@ -15,7 +15,7 @@ print("""
 </head>
 <body>
 """)
-goodsList = control_in_stock.getList()
+goodsList = controller_seller.getList()
 form = cgi.FieldStorage()
 
 for i in range(goodsList[len(goodsList)-1][0]):
@@ -23,13 +23,16 @@ for i in range(goodsList[len(goodsList)-1][0]):
     id_deadline = form.getvalue(f'deadline_{i}')
     id_price = form.getvalue(f'first_price_{i}')
     id_name = form.getvalue(f'name_{i}')
-    control_in_stock.changeStock(id_deadline, i)
-    control_in_stock.changePrice(id_price, i)
-    control_in_stock.changeName(id_name, i)
+    a=controller_seller.changeDeadline(id_deadline, i)
+    b=controller_seller.changePrice(id_price, i)
+    c=controller_seller.changeName(id_name, i)
 #name,deadline,first_price
     
-    
-print("修改完成")
+
+if(a==False):    
+    print("修改失敗")
+else:
+    print("修改完成")
 print("<br><a href='root.py'>查看管理頁面</a>")
 print("<br><a href='orderList.py'>查看訂單</a>")
 print("</body></html>")

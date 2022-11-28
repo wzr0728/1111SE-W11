@@ -1,8 +1,8 @@
-#!C:\Python39\python.exe
+#!C:\Users\何晏禎\AppData\Local\Programs\Python\Python310\python.exe
 import codecs, sys 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 import cgi
-import control_in_stock
+import controller_seller
 
 #先印出http 表頭
 print("Content-Type: text/html; charset=utf-8\n")
@@ -17,7 +17,7 @@ print("""
 """)
 form = cgi.FieldStorage()
 id = form.getvalue('i')
-control_in_stock.delStock(id)
+controller_seller.delete(id)
     
     
 print("刪除完成")
