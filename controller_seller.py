@@ -3,7 +3,7 @@ from dbConfig import conn, cur
 def add(UiD, name, deadline, first_price):
     if(name == None):
         return False
-    sql = "insert into SaleCase (UiD, name, deadline, first_price) values (%s,%s,%s);"
+    sql = "insert into SaleCase (UiD, name, deadline, first_price) values (%s,%s,%s,%s);"
     cur.execute(sql,(UiD, name, deadline, first_price))
     conn.commit()
     return True
