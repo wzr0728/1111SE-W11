@@ -30,11 +30,12 @@ def getMyCase(): #查詢得標紀錄
     sql = "select id from SaleCase where deadline <= NOW() ;"
     cur.execute(sql)
     records = cur.fetchall() # uid 
-    
+    allCase = []
     for i in records:
-        sql = "select UiD, MAX(price) from OrderCase where OiD = %s group by UiD;"
+        sql = "select UiD, MAX(price) from OrderCase where OiD = %s group by UiD desc;"
         cur.execute(sql,(i,))
         cases = cur.fetchall()
-        return cases #回傳所有得標case, 再根據得標UiD去判定該使用者是否有得標
+        allCase.append(cases[0]) #加入得標資訊
+    return allCase # 回傳所有得標資訊，再根據uiD去查詢哪一個是該使用者得標的標案
         
 
