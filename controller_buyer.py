@@ -18,7 +18,7 @@ def bid(id, price, UiD):
     if(id == None or price == None):
         return False
     sql = "insert into OrderCase (OiD, UiD, price) values (%s,%s,%s);"
-    cur.execute(sql,(OiD, UiD, price))
+    cur.execute(sql,(id, UiD, price))
     conn.commit()
     return True
 def getMyActive(UiD): #競標紀錄
