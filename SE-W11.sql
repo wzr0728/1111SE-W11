@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2022 年 11 月 21 日 08:11
+-- 產生時間： 2022 年 11 月 28 日 07:54
 -- 伺服器版本： 5.7.34
 -- PHP 版本： 7.4.21
 
@@ -30,9 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `OrderCase` (
   `id` int(255) NOT NULL,
   `OiD` int(255) NOT NULL,
-  `UiD` int(255) NOT NULL,
+  `UiD` varchar(15) NOT NULL,
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `OrderCase`
+--
+
+INSERT INTO `OrderCase` (`id`, `OiD`, `UiD`, `price`) VALUES
+(1, 1, 'user2', 100),
+(2, 1, 'user2', 1000);
 
 -- --------------------------------------------------------
 
@@ -104,7 +112,7 @@ ALTER TABLE `User`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `OrderCase`
 --
 ALTER TABLE `OrderCase`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `SaleCase`
