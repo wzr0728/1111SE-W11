@@ -1,12 +1,11 @@
 #!C:\Python39\python.exe
 import codecs,sys
 import cgi
-import control_in_stock
-
+import controller_seller
 print("Content-type:text/html; charset;utf-8\n")
 sys.stdout.flush()
 
-goodsList = control_in_stock.getList()
+goodsList = controller_seller.getList()
 
 msg = """<form name="表單" method="post" action="add_product.py">
 請依序輸入標案名稱、起標價、deadline</p>"""
