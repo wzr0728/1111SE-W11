@@ -26,12 +26,15 @@ def getMyActive(UiD): #競標紀錄
     cur.execute(sql,(UiD,))
     records = cur.fetchall()
     return records #由大到小排列
-def getMyCase(UiD): #在查詢自己的
+def getMyCase(): #查詢得標紀錄
     sql = "select id from SaleCase where deadline <= NOW() ;"
     cur.execute(sql)
     records = cur.fetchall() # uid 
     
     for i in records:
-        sql = "select MAX(id), OiD, UiD, price from OrderCase where OiD = %s group by OiD desc;"
+        sql = "select UiD, MAX(price) from OrderCase where OiD = %s group by UiD;"
+        cur.execute(sql,(i,))
+        cases = cur.fetchall()
+        return cases #回傳所有得標case, 再根據得標UiD去判定該使用者是否有得標
         
 
