@@ -32,7 +32,7 @@ def getMyCase(): #查詢得標紀錄
     records = cur.fetchall() # uid 
     allCase = []
     for i in records:
-        sql = "select UiD, MAX(price) from OrderCase where OiD = %s group by UiD desc;"
+        sql = "select UiD, MAX(price)Price from OrderCase where OiD = 1 group by UiD order by Price DESC;"
         cur.execute(sql,(i,))
         cases = cur.fetchall()
         allCase.append(cases[0]) #加入得標資訊
