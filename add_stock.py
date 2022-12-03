@@ -1,4 +1,4 @@
-#!C:\Python39\python.exe
+#!/usr/bin/python3
 import codecs,sys
 import cgi
 import controller_seller

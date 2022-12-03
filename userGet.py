@@ -2,7 +2,7 @@
 import codecs, sys 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 import cgi
-import controller_seller
+import controller_buyer
 
 #先印出http 表頭
 print("Content-Type: text/html; charset=utf-8\n")
@@ -16,19 +16,19 @@ print("""
 <body>
 """)
 
-form = cgi.FieldStorage()
 
+records = controller_buyer.getMyActive('user2')
+getRec = controller_buyer.getMyCase()
 
-id_uid = "user1"
-id_price = form.getvalue(f'first_price')
-id_name = form.getvalue(f'name')
-id_deadline = form.getvalue(f'deadline')
-status = controller_seller.add(id_uid, id_name, id_deadline, id_price)
-if(status == False):
-    print("資料不齊全，未成功新增")
+msg = "<h1>下標紀錄</h1>"
+for (id, OiD, UiD, price) in records:
+    msg = msg + f"下標編號 : {id} 標案編號：{OiD} 下標金額：{price}</p>" 
+
+msg += "<h1>得標紀錄</h1>"
+for (OiD, UiD, Price) in getRec:
+    msg = msg + f" 標案編號：{OiD} 得標者 : {UiD} 得標金額：{Price}</p>" 
+
+print(msg)
+sys.stdout.flush()
 
     
-    
-print("新增完成")
-print("<br><a href='root.py'>查看管理頁面</a>")
-print("</body></html>")

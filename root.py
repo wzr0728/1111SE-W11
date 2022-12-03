@@ -1,4 +1,4 @@
-#!C:\Users\何晏禎\AppData\Local\Programs\Python\Python310\python.exe
+#!/usr/bin/python3
 import codecs,sys
 import cgi
 import controller_seller

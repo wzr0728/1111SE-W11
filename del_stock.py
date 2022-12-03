@@ -1,4 +1,4 @@
-#!C:\Users\何晏禎\AppData\Local\Programs\Python\Python310\python.exe
+#!/usr/bin/python3
 import codecs, sys 
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
 import cgi
@@ -22,5 +22,4 @@ controller_seller.delete(id)
     
 print("刪除完成")
 print("<br><a href='root.py'>查看管理頁面</a>")
-print("<br><a href='orderList.py'>查看訂單</a>")
 print("</body></html>")
